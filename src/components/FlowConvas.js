@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import { useCallback } from "react";
 import ReactFlow from "reactflow";
 
 const FlowCanvas = ({ nodes, setNodes, edges, setEdges, onPaneDoubleClick }) => {
