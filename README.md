@@ -1,70 +1,280 @@
-# Getting Started with Create React App
+React Flow Diagram Editor
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a custom React-based flow diagram editor built using React Flow.
+Users can:
 
-## Available Scripts
+Add nodes & edges
 
-In the project directory, you can run:
+Edit nodes (double-click)
 
-### `npm start`
+Edit edges (double-click)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Delete nodes & edges (Delete key)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Create nodes by double-clicking on the canvas
 
-### `npm test`
+Reset the diagram to default metadata
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Export the diagram as JSON
 
-### `npm run build`
+Import a diagram from a JSON file
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Auto-save diagrams to localStorage
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This editor is built to be simple, clean, and fully interactive.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+🚀 Features
+✅ Node Features
 
-### `npm run eject`
+Add new nodes through the sidebar
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Double-click to edit node label
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Press Delete to remove node
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Add node by double-clicking empty canvas
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Load nodes from metadata.json
 
-## Learn More
+Save nodes to localStorage automatically
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+✅ Edge Features
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Add edges through the sidebar
 
-### Code Splitting
+Double-click to edit edge type
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Press Delete to remove edge
 
-### Analyzing the Bundle Size
+Auto-remove connected edges if node is deleted
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Save edges to localStorage
 
-### Making a Progressive Web App
+✅ Import / Export Features
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Export diagram as a .json file
 
-### Advanced Configuration
+Import any valid JSON diagram
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Validate node/edge structure
 
-### Deployment
+Auto-fit view after import
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+✅ Reset to Default
 
-### `npm run build` fails to minify
+Reset diagram to metadata.json without saving
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+LocalStorage will be cleared on reset
+
+📁 Project Structure
+src/
+│
+├── components/
+│   ├── FlowEditor.jsx        # Main editor logic
+│   ├── FlowCanvas.jsx        # ReactFlow canvas
+│   ├── Sidebar.jsx           # Sidebar UI
+│   ├── NodeForm.jsx         # Form for adding nodes
+│   ├── EdgeForm.jsx         # Form for adding edges
+│   ├── styles.css            # App-wide styles
+│
+├── metadata.json             # Default diagram data
+├── App.jsx                   # App entry
+└── index.js
+
+🧩 Component Overview
+FlowEditor.jsx
+
+Handles:
+
+Loading saved diagram or default metadata
+
+Auto-saving
+
+Adding nodes/edges
+
+Import/export
+
+Reset logic
+
+Canvas double-click → add node
+
+FlowCanvas.jsx
+
+Handles:
+
+Render nodes & edges
+
+Edit label on double-click
+
+Edit edge type on double-click
+
+Delete nodes/edges
+
+Remove connected edges when node deleted
+
+Sidebar.jsx
+
+Provides:
+
+Tabs (Node / Edge)
+
+NodeForm
+
+EdgeForm
+
+NodeForm.jsx
+
+Used to create new nodes with:
+
+id
+
+label
+
+optional x, y coordinates
+
+EdgeForm.jsx
+
+Used to create new edges:
+
+id
+
+source node
+
+target node
+
+edge type
+
+🛠️ Installation & Setup
+1️⃣ Install dependencies
+npm install
+
+2️⃣ Start the development server
+npm start
+
+3️⃣ Open in browser
+
+Go to:
+
+http://localhost:3000
+
+📌 How to Use
+➕ Add Node
+
+Go to Add Node tab
+
+Enter:
+
+id
+
+label
+
+(optional) x, y
+
+Click Add Node
+
+OR
+Double-click the canvas → automatic new node
+
+➕ Add Edge
+
+Go to Add Edge tab
+
+Enter:
+
+id
+
+source
+
+target
+
+type
+
+Click Add Edge
+
+✏️ Edit Node
+
+Double-click a node → type new label
+
+✏️ Edit Edge
+
+Double-click an edge → type new type
+(smoothstep, straight, step)
+
+🗑️ Delete Node or Edge
+
+Click node or edge
+
+Press Delete key
+
+📤 Export Diagram
+
+Click Export JSON
+
+File: flow-diagram.json
+
+📥 Import Diagram
+
+Click Import JSON
+
+Select file
+
+Diagram updates instantly
+
+🔄 Reset Diagram
+
+Loads metadata.json and clears localStorage.
+
+🧪 Testing Checklist
+Node tests:
+
+✔ Add a node
+✔ Edit node label (double-click)
+✔ Delete node (Delete key)
+✔ Connected edges automatically removed
+
+Edge tests:
+
+✔ Add edge
+✔ Edit edge type (double-click)
+✔ Delete edge (Delete key)
+
+JSON tests:
+
+✔ Export JSON
+✔ Import valid JSON
+✔ Import invalid JSON → alert message
+✔ FitView works after import
+
+📌 JSON Format Example
+{
+  "nodes": [
+    {
+      "id": "1",
+      "type": "default",
+      "position": { "x": 200, "y": 150 },
+      "data": { "label": "Node 1" }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1-2",
+      "source": "1",
+      "target": "2",
+      "type": "smoothstep"
+    }
+  ]
+}
+
+🎯 Future Enhancements (Optional)
+
+If you want, I can help implement:
+
+Right-click context menu
+
+Sidebar editing for selected node
+
+Snap-to-grid
+
+Mini-map & controls
+
+Drag-select multiple nodes
